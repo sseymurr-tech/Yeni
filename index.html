@@ -1998,19 +1998,6 @@ const GIFTS = [
   {icon:"🏆",name:"Kubok",cost:500},
 ];
 
-const DEMO_USERS = [
-  {name:"Aytən",av:"👩"},{name:"Rəşad",av:"🧔"},{name:"Nigar",av:"👩‍🦱"},
-  {name:"Tural",av:"🧑‍💼"},{name:"Günel",av:"👩‍💼"},{name:"Orxan",av:"🧑"},
-  {name:"Sevinc",av:"👩‍🎓"},{name:"Murad",av:"🧑‍🎓"},
-];
-
-const DEMO_MSGS_LIST = [
-  "Salam hamıya! 👋","Necəsiniz?","Bu oyun çox əyləncəlidir!",
-  "Kim 10-cu suala çatıb?","Bakıdan salam!","Hədiyyə gözləyirəm 😄",
-  "Bu gün 50 xal topladım!","Çox çətin suallar var 😅","Uğurlar! 🏆",
-  "Yeni qeydiyyatdan keçdim","Hamı yaxşıdır inşallah","Bu oyunu sevdim 🎮",
-];
-
 let chat = {
   city: null,
   msgs: [],
@@ -2151,19 +2138,6 @@ function doSendMsg() {
   addMissionProgress('chat', 1);
 }
 
-function addDemoMsg() {
-  if (!chat.city || !chat.users.length) return;
-  const others = chat.users.filter(u => !u.isMe);
-  if (!others.length) return;
-  const u = others[Math.floor(Math.random() * others.length)];
-  const m = {
-    type:'text', sender: u.name, av: u.av,
-    text: DEMO_MSGS_LIST[Math.floor(Math.random() * DEMO_MSGS_LIST.length)],
-    time: now(),
-  };
-  chat.msgs.push(m);
-  saveMsgs(chat.city.n, chat.msgs);
-  appendMsgEl(m);
 }
 
 function renderUsers() {
